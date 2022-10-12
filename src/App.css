@@ -1,3 +1,10 @@
+#root,
+body,
+.react-flow {
+  min-height: 100vh;
+}
+
+
 .App {
   text-align: center;
 }
@@ -36,3 +43,5 @@
     transform: rotate(360deg);
   }
 }
+
+
