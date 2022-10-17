@@ -1,8 +1,7 @@
 import React from "react";
 import "./Sidebar.css";
-import TextUpdaterNode from "./TextUpdaterNode";
 
-export default () => {
+const Sidebar = ({ children }) => {
   const onDragStart = (event, nodeType) => {
     event.dataTransfer.setData("application/reactflow", nodeType);
     event.dataTransfer.effectAllowed = "move";
@@ -22,6 +21,7 @@ export default () => {
       </div>
       <div
         className="dndnode"
+        id="2"
         onDragStart={(event) => onDragStart(event, "default")}
         draggable
       >
@@ -29,7 +29,7 @@ export default () => {
       </div>
       <div
         className="dndnode output"
-        onDragStart={(event) => onDragStart(event, "output")}
+        onDragStart={(event) => onDragStart(event, "")}
         draggable
       >
         Output Node
@@ -40,8 +40,10 @@ export default () => {
         onDragStart={(event) => onDragStart(event, "textUpdater")}
         draggable
       >
-        Text
+        text
       </div>
     </aside>
   );
 };
+
+export default Sidebar;

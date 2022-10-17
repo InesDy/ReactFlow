@@ -12,6 +12,8 @@ import "reactflow/dist/style.css";
 import Sidebar from "./Sidebar";
 import TextUpdaterNode from "./TextUpdaterNode";
 
+const nodeTypes = { textUpdater: TextUpdaterNode };
+
 const initialNodes = [
   {
     id: "1",
@@ -30,8 +32,6 @@ const Flow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
-
-  const nodeTypes = { textUpdater: TextUpdaterNode };
 
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
