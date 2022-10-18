@@ -1,10 +1,10 @@
-import Flow from "./flow/Flow";
+import WelcomePage from "./welcomePage/welcomePage";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Flow />
+      <WelcomePage />
     </div>
   );
 }
