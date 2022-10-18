@@ -1,17 +1,26 @@
-import { useCallback } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Background, Handle, Position } from "reactflow";
 
-function TextUpdaterNode({ data }) {
+const TextUpdaterNode = ({ data }) => {
   const onChange = useCallback((evt) => {
     console.log(evt.target.value);
   }, []);
+
+  const [connector, setConnector] = useState(false);
+
+  const posts = useMemo(async () => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const data = await res.json();
+    console.log(data);
+    return data;
+  }, [connector]);
 
   return (
     <div className="text-updater-node">
       <Handle
         type="target"
         position={Position.bottom}
-        onConnect={(params) => console.log("handle onConnect", params)}
+        onConnect={(params) => setConnector(!connector)}
       />
       <div>
         <label htmlFor="text" placeholder="text"></label>
@@ -19,6 +28,6 @@ function TextUpdaterNode({ data }) {
       </div>
     </div>
   );
-}
+};
 
 export default TextUpdaterNode;
